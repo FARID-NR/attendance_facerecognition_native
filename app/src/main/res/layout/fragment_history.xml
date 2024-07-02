@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.history.HistoryFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="5dp"
+
+                >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:text="History"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <RelativeLayout
+                    android:id="@+id/calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/month_year_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawableEnd="@drawable/arrow_down"
+                        android:drawablePadding="10dp"
+                        android:inputType="none"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="8dp"
+                        android:text="Pilih Tanggal"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/calendar"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/date_item" />
+
+                <RelativeLayout
+                    android:id="@+id/noDataLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calendarView"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/noDataText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Attendance data available"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" /> <!-- Set initial visibility to gone -->
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/listAttendance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@id/calendarView"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/attendanceInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/absensi_datang_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="Absensi Datang"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_toEndOf="@id/absensi_datang_text"
+                                android:gravity="end"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/jamDatang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="08:00"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/dateDatang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="4 Maret 2024"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="12dp"
+                                android:layout_height="14dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/lokasi" />
+
+                            <TextView
+                                android:id="@+id/text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@id/icon"
+                                android:text="Kantor"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/locationInfos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/attendanceInfo"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/rounded_button"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <!-- Icon Lokasi -->
+                            <ImageView
+                                android:id="@+id/icon_lokasi"
+                                android:layout_width="12dp"
+                                android:layout_height="14dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginTop="6dp"
+                                android:src="@drawable/lokasi" />
+
+                            <!-- Kontainer untuk teks Lokasi dan Status -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@id/icon_lokasi"
+                                android:orientation="vertical">
+
+                                <!-- Teks Lokasi -->
+                                <TextView
+                                    android:id="@+id/lokasiPulang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="2dp"
+                                    android:text="Lokasi"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <!-- Kontainer untuk teks Status -->
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="8dp">
+
+                                    <!-- Teks Status -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="2dp"
+                                        android:layout_marginBottom="2dp"
+                                        android:text="Status"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                    <!-- Teks Sesuai spot Absensi -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:text="Sesuai spot Absensi"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <!-- Kontainer untuk teks Status -->
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <!-- Teks Status -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="2dp"
+                                        android:layout_marginBottom="2dp"
+                                        android:text="Longitude"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                    <!-- Teks Sesuai spot Absensi -->
+                                    <TextView
+                                        android:id="@+id/longitudeDatang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginBottom="4dp"
+                                        android:text="114.56789012"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <!-- Kontainer untuk teks Status -->
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="8dp">
+
+                                    <!-- Teks Status -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="2dp"
+                                        android:layout_marginBottom="2dp"
+                                        android:text="Latitude"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                    <!-- Teks Sesuai spot Absensi -->
+                                    <TextView
+                                        android:id="@+id/latitudeDatang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginBottom="4dp"
+                                        android:text="-8.1234567"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="49dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/rounded_white"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:paddingHorizontal="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@string/peta"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/attendanceInfoPulang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/locationInfos"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/rounded_button_tl"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/absensi_pulang_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="Absensi Pulang"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_toEndOf="@id/absensi_pulang_text"
+                                android:gravity="end"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/jamPulang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Belum Absent"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/jamPulangNull"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Belum Absen"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp"
+                                        android:visibility="gone"/>
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/datePulang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="4 Maret 2024"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/icons"
+                                android:layout_width="12dp"
+                                android:layout_height="14dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/lokasi" />
+
+                            <TextView
+                                android:id="@+id/texts"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@id/icons"
+                                android:text="Kantor"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/locationInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/attendanceInfoPulang"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/rounded_button_tl"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="70dp"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <!-- Icon Lokasi -->
+                            <ImageView
+                                android:id="@+id/icon_lokasis"
+                                android:layout_width="12dp"
+                                android:layout_height="14dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginTop="6dp"
+                                android:src="@drawable/lokasi" />
+
+                            <!-- Kontainer untuk teks Lokasi dan Status -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_toEndOf="@id/icon_lokasis"
+                                android:orientation="vertical">
+
+                                <!-- Teks Lokasi -->
+                                <TextView
+                                    android:id="@+id/lokasi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="2dp"
+                                    android:text="Lokasi"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <!-- Kontainer untuk teks Status -->
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="8dp">
+
+                                    <!-- Teks Status -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="2dp"
+                                        android:layout_marginBottom="2dp"
+                                        android:text="Status"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                    <!-- Teks Sesuai spot Absensi -->
+                                    <TextView
+                                        android:id="@+id/spotLokasis"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginBottom="4dp"
+                                        android:text="Sesuai spot Absensi"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <!-- Kontainer untuk teks Status -->
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <!-- Teks Status -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="2dp"
+                                        android:layout_marginBottom="2dp"
+                                        android:text="Longitude"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                    <!-- Teks Sesuai spot Absensi -->
+                                    <TextView
+                                        android:id="@+id/longitudePulang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginBottom="4dp"
+                                        android:text="114.56789012"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <!-- Kontainer untuk teks Status -->
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="8dp">
+
+                                    <!-- Teks Status -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_marginTop="2dp"
+                                        android:layout_marginBottom="2dp"
+                                        android:text="Latitude"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                    <!-- Teks Sesuai spot Absensi -->
+                                    <TextView
+                                        android:id="@+id/latitudePulang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginBottom="4dp"
+                                        android:text="-8.1234567"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="49dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/rounded_white"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:paddingHorizontal="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@string/peta"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

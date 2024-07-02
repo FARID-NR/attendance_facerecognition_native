@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Absensi App</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="attendance_using_face_id">Attendance Using Face ID</string>
+    <string name="title_home">Home</string>
+    <string name="title_history">History</string>
+    <string name="title_profile">Profile</string>
+    <string name="peta">Lihat di Peta</string>
+    <string name="izin">Kirim Lampiran</string>
+    <string name="camera_error">Error accessing the camera.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="modal">Opps!</string>
+</resources>

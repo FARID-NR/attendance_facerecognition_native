@@ -1,0 +1,76 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#FFFFFF"
+    android:id="@+id/login"
+    android:paddingTop="50dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UINAM"
+            android:textSize="32sp"
+            android:textColor="#4A63F6"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ATTENDANCE"
+            android:textSize="14sp"
+            android:textColor="#A0A0A0"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="-8dp"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:hint="Email Address"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp"
+        android:paddingVertical="8dp"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:hint="Password"
+        android:drawableStart="@drawable/ic_password"
+        android:drawableEnd="@drawable/ic_hide"
+        android:drawablePadding="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textPassword"
+        android:layout_marginBottom="32dp"
+        android:paddingVertical="8dp"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"
+        android:onClick="onLoginButtonClick"
+        />
+</LinearLayout>
